@@ -30,7 +30,19 @@
 
 ## 2. HTTP/2 맛보기
 ### 2-1. 서버 구동하기
+- 이 책에서는 h2 내부를 설명하고 활용하도록 한다
+  - h2로 통신하는 웹 서버 설치하기
+  - 브라우저가 서버와 h2로 통신하기 위한 TLS 인증서 발급 및 설치하기 
 ### 2-2. 인증서 발급받기
+- 온라인 생성기 사용하기
+  - https://www.sslchecker.com/csr/self_signed
+  - cert.pem, privkey.pem 인증서와 키 2개를 로컬에 저장
+- 자체 서명하기
+  - 터미널에서 다음 명령어 입력하여 2개 파일 생성되는지 확인
+    ```
+    $ openssl genrsa -out privkey.pem 2048
+    $ openssl req -new -x509 -sha256 -key privkey.pem -out cert.pem -days 365 -subj "/CN=fake.example.org"
+    ```   
 ### 2-3. 첫번째 HTTP/2 서버 구동하기
 ### 2-4. 브라우저 선택하기
 
